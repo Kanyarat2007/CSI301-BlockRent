@@ -9,11 +9,16 @@ export const ETHERSCAN_TX = "https://sepolia.etherscan.io/tx/";
 // Provider ผ่าน Infura ใช้อ่านข้อมูล (ไม่ต้องเชื่อมกระเป๋า)
 export const readProvider = new JsonRpcProvider(
   import.meta.env.VITE_INFURA_URL,
+  11155111,
+  { staticNetwork: true },
 );
 export const readContract = new Contract(CONTRACT_ADDRESS, ABI, readProvider);
 // Contract ที่ผูกกับ Signer (MetaMask) ใช้ส่งธุรกรรม
 export const writeContract = (signer) =>
   new Contract(CONTRACT_ADDRESS, ABI, signer);
+
+console.log("Infura URL:", import.meta.env.VITE_INFURA_URL);
+console.log("Contract Address:", import.meta.env.VITE_CONTRACT_ADDRESS);
 
 export const STATUS = [
   "Reserved",
